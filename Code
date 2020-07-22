@@ -1,0 +1,32 @@
+Requirements:
+pip install nltk
+This program is written in oop python for the ease of development and usage for the community
+
+
+
+
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
+import nltk
+nltk.download('vader_lexicon')
+si=SIA()
+#scores=si.polarity_scores(x)
+
+class sentiment_analyser:
+  def __init__(self,user_input):
+    self.user_input = user_input
+  def main_module(self):  
+    scores=si.polarity_scores(self.user_input)
+    a=scores['pos']
+    b=scores['compound']
+    c=scores['neg']
+    d=scores['neu']
+    if a > b and a > c and a > d:
+      print('positive comment')
+    elif c > a :
+      print('negative sentiment detected')  
+
+    
+user_input=input('enter text for sentiment analysis\n')    
+c=sentiment_analyser(user_input)
+c.main_module()    
